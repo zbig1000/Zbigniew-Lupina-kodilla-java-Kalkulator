@@ -23,7 +23,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-#extra content
+#extra content corrected
 out/
 out
 build
