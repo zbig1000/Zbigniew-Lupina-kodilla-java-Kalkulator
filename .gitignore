@@ -23,23 +23,8 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#extra content corrected
-=======
->>>>>>> parent of b5c1048... corrective commit gitignore
-=======
->>>>>>> parent of b5c1048... corrective commit gitignore
-=======
 #extra content
->>>>>>> parent of 367f84a... 4.6 corrective commit gitignore
-=======
-#extra content
->>>>>>> parent of 367f84a... 4.6 corrective commit gitignore
 out/
 out
 build
-*.iml
-.idea
+
