@@ -15,6 +15,5 @@ public class KodillaCourseApplication {
 		Calculator kalkulator = new Calculator();
 		System.out.println("dodawanie 2+2 = " + kalkulator.add(2d, 2d));
 		System.out.println("odejmowanie 4.6 - 2.1 = " + kalkulator.substract(4.6, 2.1));
-		System.out.println("UHU test GITa");
 	}
 }
