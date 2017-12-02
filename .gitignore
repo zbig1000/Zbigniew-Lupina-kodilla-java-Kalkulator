@@ -24,7 +24,10 @@ dist/
 nbdist/
 .nb-gradle/
 <<<<<<< HEAD
+<<<<<<< HEAD
 #extra content corrected
+=======
+>>>>>>> parent of b5c1048... corrective commit gitignore
 =======
 >>>>>>> parent of b5c1048... corrective commit gitignore
 out/
