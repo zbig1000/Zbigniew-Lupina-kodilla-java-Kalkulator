@@ -9,15 +9,12 @@ public class OddNumbersExterminator {
 
         ArrayList<Integer> newArrayList = new ArrayList<Integer>();
         if (numbers.size() > 0) {
-            Iterator<Integer> iteratorNumbers = numbers.iterator();
-
-            while(iteratorNumbers.hasNext()){
-                Integer currentInteger = iteratorNumbers.next();
+            for (Integer currentInteger : numbers) {
                 if ((currentInteger % 2) == 0) {
                     newArrayList.add(currentInteger);
                 }
             }
-            }
+        }
         return newArrayList;
         }
 }

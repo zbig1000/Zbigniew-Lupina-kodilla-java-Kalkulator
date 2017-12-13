@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CollectionTestSuite {
 
@@ -21,34 +22,32 @@ public class CollectionTestSuite {
     @Test
     public void testOddNumbersExterminatorEmptyList() {
         System.out.println("Testing EmptyList");
+        //Given
         ArrayList<Integer> newArrayListTest = new ArrayList<Integer>();
-        Assert.assertEquals(OddNumbersExterminator.exterminate(newArrayListTest), newArrayListTest);
+        //When
+        ArrayList<Integer> resultArrayList = OddNumbersExterminator.exterminate(newArrayListTest);
+        //Then
+        Assert.assertEquals(newArrayListTest, resultArrayList);
     }
 
 
     @Test
     public void testOddNumbersExterminatorNormalList() {
         System.out.println("Testing NormalList");
+
+        //Given
+        Integer[] tempList = new Integer[]{1,2,3,4,5,6,7,8,9,10};
         ArrayList<Integer> newArrayListTest = new ArrayList<Integer>();
-        newArrayListTest.add(1);
-        newArrayListTest.add(2);
-        newArrayListTest.add(3);
-        newArrayListTest.add(4);
-        newArrayListTest.add(5);
-        newArrayListTest.add(6);
-        newArrayListTest.add(7);
-        newArrayListTest.add(8);
-        newArrayListTest.add(9);
-        newArrayListTest.add(10);
+        newArrayListTest.addAll(Arrays.asList(tempList));
 
-        ArrayList<Integer> newArrayListResult = new ArrayList<Integer>();
-        newArrayListResult.add(2);
-        newArrayListResult.add(4);
-        newArrayListResult.add(6);
-        newArrayListResult.add(8);
-        newArrayListResult.add(10);
+        tempList = new Integer[]{2,4,6,8,10};
+        ArrayList<Integer> newArrayListCorrectResult = new ArrayList<Integer>();
+        newArrayListCorrectResult.addAll(Arrays.asList(tempList));
 
-        Assert.assertEquals(OddNumbersExterminator.exterminate(newArrayListTest), newArrayListResult);
+        //When
+        ArrayList<Integer> ArrayListResult = OddNumbersExterminator.exterminate(newArrayListTest);
+        //Then
+        Assert.assertEquals(newArrayListCorrectResult, ArrayListResult);
     }
 
 
