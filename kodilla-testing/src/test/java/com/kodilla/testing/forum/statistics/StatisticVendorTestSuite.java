@@ -1,14 +1,10 @@
 package com.kodilla.testing.forum.statistics;
 
-import com.kodilla.testing.weather.stub.Temperatures;
-import com.kodilla.testing.weather.stub.WeatherForecast;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
