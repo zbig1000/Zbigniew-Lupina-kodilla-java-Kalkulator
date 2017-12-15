@@ -42,8 +42,8 @@ public class StatisticVendor {
         commentNumber = stats.commentsCount();
 
         if (userNumber > 0) {
-            averagePostNumberPerUser = postNumber / userNumber;
-            averageCommentNumberPerUser = commentNumber / userNumber;
+            averagePostNumberPerUser = 1.0 * postNumber / userNumber;
+            averageCommentNumberPerUser = 1.0 * commentNumber / userNumber;
         }
         if (postNumber > 0) {
             averageCommentNumberPerPost = 1.0 *commentNumber / postNumber;
