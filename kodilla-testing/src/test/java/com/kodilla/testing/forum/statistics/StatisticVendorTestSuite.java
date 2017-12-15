@@ -109,7 +109,7 @@ public class StatisticVendorTestSuite {
 
     @Test
     public void testCalculateStatisticsWithMock_MoreCommentsThanPosts() {
-        //  comments < posts
+        //  comments > posts
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> names = new ArrayList<String>();
@@ -142,7 +142,7 @@ public class StatisticVendorTestSuite {
 
     @Test
     public void testCalculateStatisticsWithMock_MorePostsThanComments() {
-        //   posts < comments
+        //   posts > comments
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> names = new ArrayList<String>();
@@ -175,6 +175,7 @@ public class StatisticVendorTestSuite {
 
     @Test
     public void testCalculateStatisticsWithMock_100_Users() {
+        // 100 users
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         ArrayList<String> names = new ArrayList<String>();
