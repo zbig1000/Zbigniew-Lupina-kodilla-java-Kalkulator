@@ -36,13 +36,11 @@ public class CollectionTestSuite {
         System.out.println("Testing NormalList");
 
         //Given
-        Integer[] tempList = new Integer[]{1,2,3,4,5,6,7,8,9,10};
         ArrayList<Integer> newArrayListTest = new ArrayList<Integer>();
-        newArrayListTest.addAll(Arrays.asList(tempList));
+        newArrayListTest.addAll(Arrays.asList(1,2,3,4,5,6,7,8,9,10));
 
-        tempList = new Integer[]{2,4,6,8,10};
         ArrayList<Integer> newArrayListCorrectResult = new ArrayList<Integer>();
-        newArrayListCorrectResult.addAll(Arrays.asList(tempList));
+        newArrayListCorrectResult.addAll(Arrays.asList(2,4,6,8,10));
 
         //When
         ArrayList<Integer> ArrayListResult = OddNumbersExterminator.exterminate(newArrayListTest);
