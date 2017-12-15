@@ -38,6 +38,6 @@ public class ShapeCollectorTestSuite {
         sc.addFigure(circle);
         sc.addFigure(square);
         // Then
-        Assert.assertEquals(sc.showFigures(), "Circle Square ");
+        Assert.assertEquals(sc.showFigures(), "Circle Square");
     }
 }

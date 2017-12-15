@@ -16,4 +16,9 @@ public class Circle implements Shape {
         return PI*pow(radius, 2d);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Circle) return true;
+        else return false;
+    }
 }

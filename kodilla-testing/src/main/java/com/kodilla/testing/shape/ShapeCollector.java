@@ -1,6 +1,7 @@
 package com.kodilla.testing.shape;
 
 import java.util.ArrayList;
+import java.util.StringJoiner;
 
 public class ShapeCollector {
 
@@ -13,26 +14,17 @@ public class ShapeCollector {
         arrayShapes.add(shape);
     }
     public void removeFigure(Shape shape) {
-        for (Shape sh: arrayShapes) {
-            String shapeName = sh.getShapeName();
-            if (shapeName == shape.getShapeName()) {
-                arrayShapes.remove(sh);
-                break;
-            }
-
-        }
+        arrayShapes.remove(shape);
     }
     public Shape getFigure(int n) {
         return arrayShapes.get(n);
     }
     public String showFigures() {
-        String result = "";
-        StringBuilder stringBuilder = new StringBuilder();
+        StringJoiner stringJoiner = new StringJoiner(" ");
         for (Shape sh: arrayShapes) {
-            stringBuilder.append(sh.getShapeName());
-            stringBuilder.append(" ");
+            stringJoiner.add(sh.getShapeName());
         }
-        return stringBuilder.toString();
+        return stringJoiner.toString();
     }
     public int getSize() {
         return arrayShapes.size();

@@ -15,4 +15,8 @@ public class Triangle implements Shape {
         return 0.5*base*hight;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Triangle) return true;
+        else return false;    }
 }
