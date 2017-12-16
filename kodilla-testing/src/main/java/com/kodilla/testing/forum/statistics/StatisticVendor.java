@@ -46,9 +46,15 @@ public class StatisticVendor {
         if (userNumber > 0) {
             averagePostNumberPerUser = 1.0 * postNumber / userNumber;
             averageCommentNumberPerUser = 1.0 * commentNumber / userNumber;
+        } else {
+            averagePostNumberPerUser = 0d;
+            averageCommentNumberPerUser = 0d;
         }
+
         if (postNumber > 0) {
             averageCommentNumberPerPost = 1.0 *commentNumber / postNumber;
+        } else {
+            averageCommentNumberPerPost = 0d;
         }
     }
 

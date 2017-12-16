@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -207,4 +208,46 @@ public class StatisticVendorTestSuite {
         Assert.assertEquals(0, avCommentPerUser,0.01d);
         Assert.assertEquals(0, avCommentPerPost, 0.01d);
     }
+    @Test
+    public void testCalculateStatisticsTwoTimesWith0UsersSecondTime() {
+// 100 users
+//Given
+        Statistics statisticsMock = mock(Statistics.class);
+        ArrayList<String> names = new ArrayList<String>();
+        names.add("adam");
+        names.add("adolf");
+
+        when(statisticsMock.usersNames()).thenReturn(names);
+        when(statisticsMock.commentsCount()).thenReturn(100);
+        when(statisticsMock.postsCount()).thenReturn(10);
+
+        StatisticVendor statsVendor = new StatisticVendor();
+
+//When
+        statsVendor.calculateAdvStatistics(statisticsMock);
+        int uNumber = statsVendor.getUserNumber();
+        int pNumber = statsVendor.getPostNumber();
+        int cNumber = statsVendor.getCommentNumber();
+
+        double avPostPerUser = statsVendor.getAveragePostNumberPerUser();
+        double avCommentPerUser = statsVendor.getAverageCommentNumberPerUser();
+        double avCommentPerPost = statsVendor.getAverageCommentNumberPerPost();
+
+//Then
+        Assert.assertEquals(5d, avPostPerUser, 0.01d);
+        Assert.assertEquals(50, avCommentPerUser,0.01d);
+
+//Given second call
+        when(statisticsMock.usersNames()).thenReturn(Collections.<String>emptyList());
+//When second call
+        statsVendor.calculateAdvStatistics(statisticsMock);
+        avPostPerUser = statsVendor.getAveragePostNumberPerUser();
+        avCommentPerUser = statsVendor.getAverageCommentNumberPerUser();
+
+        //Then second call
+        Assert.assertEquals(0, statsVendor.getUserNumber());
+        Assert.assertEquals(0, avPostPerUser, 0.01d);
+        Assert.assertEquals(0, avCommentPerUser,0.01d);
+    }
+
 }
