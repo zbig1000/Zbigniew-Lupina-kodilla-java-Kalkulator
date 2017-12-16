@@ -1,5 +1,7 @@
 package com.kodilla.testing.forum.statistics;
 
+import java.util.StringJoiner;
+
 public class StatisticVendor {
     private int userNumber = 0;
     private int postNumber = 0;
@@ -51,29 +53,23 @@ public class StatisticVendor {
     }
 
     public String showStatistics() {
-        StringBuilder stringBuilder = new StringBuilder();
+        StringJoiner stringJoiner = new StringJoiner(" ");
 
-        stringBuilder.append("userNumber ");
-        stringBuilder.append(userNumber);
-        stringBuilder.append(" ");
-        stringBuilder.append("postNumber ");
-        stringBuilder.append(postNumber);
-        stringBuilder.append(" ");
-        stringBuilder.append("commentNumber ");
-        stringBuilder.append(commentNumber);
-        stringBuilder.append(" ");
+        stringJoiner.add("userNumber ");
+        stringJoiner.add(new Integer(userNumber).toString());
+        stringJoiner.add("postNumber ");
+        stringJoiner.add(new Integer(postNumber).toString());
+        stringJoiner.add("commentNumber ");
+        stringJoiner.add(new Integer(commentNumber).toString());
 
-        stringBuilder.append("averagePostNumberPerUser ");
-        stringBuilder.append(averagePostNumberPerUser);
-        stringBuilder.append(" ");
-        stringBuilder.append("averageCommentNumberPerUser ");
-        stringBuilder.append(averageCommentNumberPerUser);
-        stringBuilder.append(" ");
-        stringBuilder.append("averageCommentNumberPerPost ");
-        stringBuilder.append(averageCommentNumberPerPost);
-        stringBuilder.append(" ");
+        stringJoiner.add("averagePostNumberPerUser ");
+        stringJoiner.add(new Double(averagePostNumberPerUser).toString());
+        stringJoiner.add("averageCommentNumberPerUser ");
+        stringJoiner.add(new Double(averageCommentNumberPerUser).toString());
+        stringJoiner.add("averageCommentNumberPerPost ");
+        stringJoiner.add(new Double(averageCommentNumberPerPost).toString());
 
-        return stringBuilder.toString();
+        return stringJoiner.toString();
     }
 
 }
