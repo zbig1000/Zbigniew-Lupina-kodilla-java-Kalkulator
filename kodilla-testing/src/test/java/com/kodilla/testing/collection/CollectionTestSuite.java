@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class CollectionTestSuite {
 
@@ -34,14 +35,9 @@ public class CollectionTestSuite {
     @Test
     public void testOddNumbersExterminatorNormalList() {
         System.out.println("Testing NormalList");
-
         //Given
-
-        ArrayList<Integer> newArrayListTest = new ArrayList<Integer>();
-        newArrayListTest.addAll(Arrays.asList(1,2,3,4,5,6,7,8,9,10));
-
-        ArrayList<Integer> newArrayListCorrectResult = new ArrayList<Integer>();
-        newArrayListCorrectResult.addAll(Arrays.asList(2,4,6,8,10));
+        List<Integer> newArrayListTest = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        List<Integer> newArrayListCorrectResult = Arrays.asList(2,4,6,8,10);
 
         //When
         ArrayList<Integer> ArrayListResult = OddNumbersExterminator.exterminate(newArrayListTest);
