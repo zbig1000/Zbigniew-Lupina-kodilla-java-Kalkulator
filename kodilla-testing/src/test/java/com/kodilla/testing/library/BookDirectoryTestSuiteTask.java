@@ -20,7 +20,7 @@ public class BookDirectoryTestSuiteTask {
     }
 
     @Test
-    public void testLendBooksWithCondition_NoBooksLend() {
+    public void testLentBooksWithCondition_NoBooksLent() {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
@@ -36,7 +36,7 @@ public class BookDirectoryTestSuiteTask {
         assertEquals(0, theListOfBooks.size());
     }
     @Test
-    public void testLendBooksWithCondition_OneBooksLent() {
+    public void testLentBooksWithCondition_OneBooksLent() {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
@@ -52,7 +52,7 @@ public class BookDirectoryTestSuiteTask {
         assertEquals(1, theListOfBooks.size());
     }
     @Test
-    public void testLendBooksWithCondition_FiveBooksLent() {
+    public void testLentBooksWithCondition_FiveBooksLent() {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
