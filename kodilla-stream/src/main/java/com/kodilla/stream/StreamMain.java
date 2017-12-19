@@ -8,9 +8,9 @@ public class StreamMain {
 
         poemBeautifier.beautify("Ala ma kota", a -> "ABC" + a );
         poemBeautifier.beautify("Ala ma kota", a -> a + "ABC");
-        poemBeautifier.beautify("Ala ma kota", a -> new String(a).toUpperCase());
-        poemBeautifier.beautify("Ala ma kota", a -> new String(a).toLowerCase());
-        poemBeautifier.beautify("Ala ma kota", a -> new String(a).replaceAll("kot", "wieloryb"));
+        poemBeautifier.beautify("Ala ma kota", a -> a.toUpperCase());
+        poemBeautifier.beautify("Ala ma kota", a -> a.toLowerCase());
+        poemBeautifier.beautify("Ala ma kota", a -> a.replaceAll("kot", "wieloryb"));
 
     }
 
