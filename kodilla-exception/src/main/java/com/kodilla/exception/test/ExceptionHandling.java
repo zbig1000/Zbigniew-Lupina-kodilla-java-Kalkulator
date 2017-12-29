@@ -1,9 +1,5 @@
 package com.kodilla.exception.test;
 
-import com.kodilla.exception.io.FileReaderException;
-
-import java.util.stream.Stream;
-
 public class ExceptionHandling {
     public static void main(String args[]) {
 
