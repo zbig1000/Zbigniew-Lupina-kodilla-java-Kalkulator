@@ -8,7 +8,7 @@ public class MovieStoreExtractor {
 
         MovieStore movieStore = new MovieStore();
 
-        String movieList = movieStore.getMovies().entrySet().stream()
+        String movieList = movieStore.getMovies().entrySet().stream().parallel()
                 .map(entry -> entry.getValue())
                 .flatMap(list -> list.stream())
                 .collect(Collectors.joining("!","" ,""));
