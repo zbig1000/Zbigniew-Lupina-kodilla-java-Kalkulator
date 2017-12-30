@@ -39,10 +39,7 @@ public class MovieStoreTestSuiteTask {
         MovieStore movieStore = new MovieStore(prepareTestData());
 
         // When
-        String movieList = movieStore.getMovies().entrySet().stream().parallel()
-                .map(entry -> entry.getValue())
-                .flatMap(list -> list.stream())
-                .collect(Collectors.joining("!", "", ""));
+        String movieList = movieStore.translationString();
 
         // Then
         String expectedResult = "Żelazny Człowiek!Iron Man!Mściciele!Avengers!Błyskawica!Flash";
