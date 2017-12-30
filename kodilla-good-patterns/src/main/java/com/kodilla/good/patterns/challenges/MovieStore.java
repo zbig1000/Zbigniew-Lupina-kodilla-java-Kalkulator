@@ -18,7 +18,7 @@ public class MovieStore {
 
     public String translationString() {
         if (!moviesWithTranslations.isEmpty())
-        return this.getMovies().entrySet().stream().parallel()
+        return moviesWithTranslations.entrySet().stream().parallel()
                 .map(entry -> entry.getValue())
                 .flatMap(list -> list.stream())
                 .collect(Collectors.joining("!", "", ""));
