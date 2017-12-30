@@ -3,46 +3,46 @@ package com.kodilla.good.patterns.challenges;
 import java.util.stream.Collectors;
 
 public class ProductOrderService {
-    private InformationService informationService;
-    private OrderingService orderingService;
-    private OrderRepository orderRepository;
+    private InformationServiceInterface informationServiceInterface;
+    private OrderingServiceInterface orderingServiceInterface;
+    private OrderRepositoryInterface orderRepositoryInterface;
 
-    public ProductOrderService(final InformationService informationService,
-                           final OrderingService orderingService,
-                           final OrderRepository orderRepository) {
-        this.informationService = informationService;
-        this.orderingService = orderingService;
-        this.orderRepository = orderRepository;
+    public ProductOrderService(final InformationServiceInterface informationServiceInterface,
+                           final OrderingServiceInterface orderingServiceInterface,
+                           final OrderRepositoryInterface orderRepositoryInterface) {
+        this.informationServiceInterface = informationServiceInterface;
+        this.orderingServiceInterface = orderingServiceInterface;
+        this.orderRepositoryInterface = orderRepositoryInterface;
     }
 
     public OrderDto process(final OrderRequest orderRequest) {
-        boolean isSold = orderingService.sale(orderRequest);
+        boolean isSold = orderingServiceInterface.sale(orderRequest);
 
         if (isSold) {
-            informationService.inform(orderRequest.getUser());
-            orderRepository.createOrder(orderRequest);
+            informationServiceInterface.inform(orderRequest.getUser());
+            orderRepositoryInterface.createOrder(orderRequest);
             return new OrderDto(orderRequest.getUser(), true);
         } else {
             return new OrderDto(orderRequest.getUser(), false);
         }
     }
     public String getUserOrderList(User user) {
-       return orderRepository.getAllUserOrders(user).stream()
+       return orderRepositoryInterface.getAllUserOrders(user).stream()
                 .map(order -> order.getOrderKey().getKey())
                 .map(Object::toString)
                 .collect(Collectors.joining("'", "<",">"));
     }
     public long getTotalItemOrdered() {
-        return orderRepository.getAllExistingOrders().stream()
+        return orderRepositoryInterface.getAllExistingOrders().stream()
                 .map(order -> order.getQuantity())
                 .reduce(0, (total, quantity) -> total = total + quantity);
     }
     public long getUserOrderQuantity(User user) {
-        return orderRepository.getAllUserOrders(user).stream()
+        return orderRepositoryInterface.getAllUserOrders(user).stream()
                 .count();
     }
     public long getTotalOrderQuantity() {
-        return orderRepository.getAllExistingOrders().stream()
+        return orderRepositoryInterface.getAllExistingOrders().stream()
         .count();
     }
 }

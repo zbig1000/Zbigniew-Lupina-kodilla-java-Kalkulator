@@ -27,7 +27,7 @@ public class OrdernigServiceTestSuite {
         OrderRequest orderRequestWarszawaMiska = new OrderRequest(userWarszawa, LocalDate.now(), miska, 1, new OrderKey(generateOrderKey()));
 
         productOrderService =
-                new ProductOrderService(new InformationServicePerformer(), new OrderingServicePerformer(), new OrderRepositoryVendor());
+                new ProductOrderService(new InformationService(), new OrderingService(), new OrderRepository());
 
         OrderDto orderResult = productOrderService.process(orderRequestBydgoszczSzczotka);
         orderResult = productOrderService.process(orderRequestBydgoszczKapcie);

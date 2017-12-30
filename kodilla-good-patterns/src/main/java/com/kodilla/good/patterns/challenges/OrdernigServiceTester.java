@@ -23,7 +23,7 @@ public class OrdernigServiceTester {
         OrderRequest orderRequestWarszawaMiska = new OrderRequest(userWarszawa, LocalDate.now(), miska, 1, new OrderKey(generateOrderKey()));
 
         ProductOrderService productOrderService =
-                new ProductOrderService(new InformationServicePerformer(), new OrderingServicePerformer(), new OrderRepositoryVendor());
+                new ProductOrderService(new InformationService(), new OrderingService(), new OrderRepository());
 
         OrderDto orderResult = productOrderService.process(orderRequestBydgoszczSzczotka);
         System.out.println("order result " + orderResult);
