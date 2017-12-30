@@ -14,6 +14,7 @@ public class MovieStoreTestSuiteTask {
 
     public Map<String, List<String>> prepareTestData() {
         List<String> ironManTranslations = new ArrayList<>();
+
         ironManTranslations.add("Żelazny Człowiek");
         ironManTranslations.add("Iron Man");
 

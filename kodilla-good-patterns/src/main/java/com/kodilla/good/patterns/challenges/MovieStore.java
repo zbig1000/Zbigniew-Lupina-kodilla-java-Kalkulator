@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MovieStore {
-
     private  Map<String, List<String>> moviesWithTranslations;
 
     public MovieStore(Map<String, List<String>> moviesWithTranslations) {
