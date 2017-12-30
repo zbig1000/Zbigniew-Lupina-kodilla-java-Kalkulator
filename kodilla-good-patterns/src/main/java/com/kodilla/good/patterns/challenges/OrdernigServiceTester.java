@@ -22,18 +22,18 @@ public class OrdernigServiceTester {
         OrderRequest orderRequestBydgoszczKapcie = new OrderRequest(userBydgoszcz, LocalDate.now().minusWeeks(5), kapcie, 1, new OrderKey(generateOrderKey()));
         OrderRequest orderRequestWarszawaMiska = new OrderRequest(userWarszawa, LocalDate.now(), miska, 1, new OrderKey(generateOrderKey()));
 
-        ProductOrderService productOrderService =
-                new ProductOrderService(new InformationService(), new OrderingService(), new OrderRepository());
+        GeneralOrderingService generalOrderingService =
+                new GeneralOrderingService(new InformationService(), new OrderingService(), new OrderRepository());
 
-        OrderDto orderResult = productOrderService.process(orderRequestBydgoszczSzczotka);
+        OrderDto orderResult = generalOrderingService.process(orderRequestBydgoszczSzczotka);
         System.out.println("order result " + orderResult);
 
-        orderResult = productOrderService.process(orderRequestBydgoszczKapcie);
-        orderResult = productOrderService.process(orderRequestWarszawaMiska);
+        orderResult = generalOrderingService.process(orderRequestBydgoszczKapcie);
+        orderResult = generalOrderingService.process(orderRequestWarszawaMiska);
 
-        System.out.println("System total order quantity = " + productOrderService.getTotalOrderQuantity());
-        System.out.println("user Bygoszcz orders = " + productOrderService.getUserOrderList(userBydgoszcz));
-        System.out.println("user Warszawa orders = " + productOrderService.getUserOrderList(userWarszawa));
+        System.out.println("System total order quantity = " + generalOrderingService.getTotalOrderQuantity());
+        System.out.println("user Bygoszcz orders = " + generalOrderingService.getUserOrderList(userBydgoszcz));
+        System.out.println("user Warszawa orders = " + generalOrderingService.getUserOrderList(userWarszawa));
 
     }
 }

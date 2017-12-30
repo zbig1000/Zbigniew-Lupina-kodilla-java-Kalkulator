@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 public class OrdernigServiceTestSuite {
     private static int dailyOrderCounter = 0;
-    ProductOrderService productOrderService;
+    GeneralOrderingService generalOrderingService;
     User userBydgoszcz, userWarszawa;
 
     public static int generateOrderKey() {
@@ -26,12 +26,12 @@ public class OrdernigServiceTestSuite {
         OrderRequest orderRequestBydgoszczKapcie = new OrderRequest(userBydgoszcz, LocalDate.now().minusWeeks(5), kapcie, 1, new OrderKey(generateOrderKey()));
         OrderRequest orderRequestWarszawaMiska = new OrderRequest(userWarszawa, LocalDate.now(), miska, 1, new OrderKey(generateOrderKey()));
 
-        productOrderService =
-                new ProductOrderService(new InformationService(), new OrderingService(), new OrderRepository());
+        generalOrderingService =
+                new GeneralOrderingService(new InformationService(), new OrderingService(), new OrderRepository());
 
-        OrderDto orderResult = productOrderService.process(orderRequestBydgoszczSzczotka);
-        orderResult = productOrderService.process(orderRequestBydgoszczKapcie);
-        orderResult = productOrderService.process(orderRequestWarszawaMiska);
+        OrderDto orderResult = generalOrderingService.process(orderRequestBydgoszczSzczotka);
+        orderResult = generalOrderingService.process(orderRequestBydgoszczKapcie);
+        orderResult = generalOrderingService.process(orderRequestWarszawaMiska);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class OrdernigServiceTestSuite {
         // Given
         prepareTestData();
         // When
-        long currentTotalOrderQuantity = productOrderService.getTotalOrderQuantity();
+        long currentTotalOrderQuantity = generalOrderingService.getTotalOrderQuantity();
 
         // Then
         long expectedTotalOrderQuantity = 3;
@@ -51,7 +51,7 @@ public class OrdernigServiceTestSuite {
         // Given
         prepareTestData();
         // When
-        long currentUserOrderQuantity = productOrderService.getUserOrderQuantity(userBydgoszcz);
+        long currentUserOrderQuantity = generalOrderingService.getUserOrderQuantity(userBydgoszcz);
 
         // Then
         long expectedTotalOrderQuantity = 2;
@@ -62,7 +62,7 @@ public class OrdernigServiceTestSuite {
         // Given
         prepareTestData();
         // When
-        long currentTotalItemQuantity = productOrderService.getTotalItemOrdered();
+        long currentTotalItemQuantity = generalOrderingService.getTotalItemOrdered();
 
         // Then
         long expectedTotalItemQuantity = 4;

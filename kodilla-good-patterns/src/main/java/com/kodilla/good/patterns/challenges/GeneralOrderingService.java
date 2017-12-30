@@ -2,14 +2,14 @@ package com.kodilla.good.patterns.challenges;
 
 import java.util.stream.Collectors;
 
-public class ProductOrderService {
+public class GeneralOrderingService {
     private InformationServiceInterface informationServiceInterface;
     private OrderingServiceInterface orderingServiceInterface;
     private OrderRepositoryInterface orderRepositoryInterface;
 
-    public ProductOrderService(final InformationServiceInterface informationServiceInterface,
-                           final OrderingServiceInterface orderingServiceInterface,
-                           final OrderRepositoryInterface orderRepositoryInterface) {
+    public GeneralOrderingService(final InformationServiceInterface informationServiceInterface,
+                                  final OrderingServiceInterface orderingServiceInterface,
+                                  final OrderRepositoryInterface orderRepositoryInterface) {
         this.informationServiceInterface = informationServiceInterface;
         this.orderingServiceInterface = orderingServiceInterface;
         this.orderRepositoryInterface = orderRepositoryInterface;
