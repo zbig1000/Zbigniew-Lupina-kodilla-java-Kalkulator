@@ -1,10 +1,6 @@
-package com.kodilla.exception;
+package com.kodilla.exception.test;
 
-import com.kodilla.exception.test.Flight;
-import com.kodilla.exception.test.RouteFinder;
-import com.kodilla.exception.test.RouteNotFoundException;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class RouteFinderTestSuiteTask {
