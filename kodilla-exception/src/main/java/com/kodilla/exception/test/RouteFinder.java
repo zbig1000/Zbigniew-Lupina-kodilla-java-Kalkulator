@@ -12,15 +12,10 @@ public class RouteFinder {
     }
 
     public boolean findFlight(Flight flight) throws RouteNotFoundException {
-        String destination = flight.getArrivalAirport();
 
-        for (Map.Entry<String, Boolean> entry : flightMap.entrySet()) {
-            if (entry.getKey() == destination) {
-                return true;
-            }
-        }
-        if (!false) throw new RouteNotFoundException("No destination port found");
-        return false;
+        if (!flightMap.containsKey(flight.getArrivalAirport()))
+            throw new RouteNotFoundException("No destination port found");
+        return true;
     }
 }
 
