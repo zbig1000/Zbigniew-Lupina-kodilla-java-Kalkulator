@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.time.LocalDate;
 import static org.junit.Assert.assertEquals;
 
-public class OrdernigServiceTestSuite {
+public class GeneralOrderingServiceTestSuite {
     private static int dailyOrderCounter = 0;
     GeneralOrderingService generalOrderingService;
     User userBydgoszcz, userWarszawa;

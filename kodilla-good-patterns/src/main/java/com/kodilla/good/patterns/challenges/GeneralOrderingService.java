@@ -35,7 +35,7 @@ public class GeneralOrderingService {
     public long getTotalItemOrdered() {
         return orderRepositoryInterface.getAllExistingOrders().stream()
                 .map(order -> order.getQuantity())
-                .reduce(0, (total, quantity) -> total = total + quantity);
+                .reduce(0, (total, quantity) -> total += quantity);
     }
     public long getUserOrderQuantity(User user) {
         return orderRepositoryInterface.getAllUserOrders(user).stream()
