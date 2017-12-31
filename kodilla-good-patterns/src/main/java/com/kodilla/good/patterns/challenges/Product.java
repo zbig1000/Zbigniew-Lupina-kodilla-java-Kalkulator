@@ -1,7 +1,5 @@
 package com.kodilla.good.patterns.challenges;
 
-import java.rmi.Naming;
-
 public class Product {
     private String name;
 
