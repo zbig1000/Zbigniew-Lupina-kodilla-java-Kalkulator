@@ -23,7 +23,7 @@ public class OrdernigServiceTester {
         OrderRequest orderRequestWarszawaMiska = new OrderRequest(userWarszawa, LocalDate.now(), miska, 1, new OrderKey(generateOrderKey()));
 
         GeneralOrderingService generalOrderingService =
-                new GeneralOrderingService(new InformationService(), new OrderingService(), new OrderRepository());
+                new GeneralOrderingService(new InformationServiceImpl(), new OrderingServiceImpl(), new OrderRepositoryImpl());
 
         OrderDto orderResult = generalOrderingService.process(orderRequestBydgoszczSzczotka);
         System.out.println("order result " + orderResult);

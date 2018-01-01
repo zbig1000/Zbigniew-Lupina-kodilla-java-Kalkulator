@@ -3,13 +3,13 @@ package com.kodilla.good.patterns.challenges;
 import java.util.stream.Collectors;
 
 public class GeneralOrderingService {
-    private InformationServiceInterface informationService;
-    private OrderingServiceInterface orderingService;
-    private OrderRepositoryInterface orderRepository;
+    private InformationService informationService;
+    private OrderingService orderingService;
+    private OrderRepository orderRepository;
 
-    public GeneralOrderingService(final InformationServiceInterface informationService,
-                                  final OrderingServiceInterface orderingService,
-                                  final OrderRepositoryInterface orderRepository) {
+    public GeneralOrderingService(final InformationService informationService,
+                                  final OrderingService orderingService,
+                                  final OrderRepository orderRepository) {
         this.informationService = informationService;
         this.orderingService = orderingService;
         this.orderRepository = orderRepository;
@@ -34,7 +34,7 @@ public class GeneralOrderingService {
     }
     public long getTotalItemOrdered() {
         return orderRepository.getAllExistingOrders().stream()
-                .map(order -> order.getQuantity())
+                .map(OrderRequest::getQuantity)
                 .reduce(0, (total, quantity) -> total += quantity);
     }
     public long getUserOrderQuantity(User user) {
