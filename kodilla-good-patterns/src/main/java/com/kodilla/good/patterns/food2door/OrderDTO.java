@@ -1,6 +1,6 @@
 package com.kodilla.good.patterns.food2door;
 
-public interface DtoInterface {
+public interface OrderDTO {
     String getVendorName();
 
     String getProductName();
@@ -8,4 +8,6 @@ public interface DtoInterface {
     int getQuantity();
 
     int getOrderNumber();
+
+    String getStatus();
 }
