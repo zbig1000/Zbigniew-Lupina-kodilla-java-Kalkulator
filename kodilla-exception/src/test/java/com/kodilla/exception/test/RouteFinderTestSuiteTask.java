@@ -1,41 +1,66 @@
 package com.kodilla.exception.test;
 
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 public class RouteFinderTestSuiteTask {
+    private RouteFinder routeFinder;
 
     @Test
-    public void testRouteFinder() {
+    public void testRouteFinderFlightPossible() {
 
-        boolean isFlightToBerlin, isFlightToTokyo, isFlightToParis;
-        RouteFinder routeFinder = new RouteFinder();
+        boolean isFlightToBerlin = false;
+        routeFinder = new RouteFinder();
 
         // Given
         Flight flightToBerlin = new Flight("Warsaw", "Berlin");
-        Flight flightToTokyo = new Flight("Warsaw", "Tokyo");
-        Flight flightToParis = new Flight("Warsaw", "Paris");
 
         // When
         try {
             isFlightToBerlin = routeFinder.findFlight(flightToBerlin);
         } catch (RouteNotFoundException e) {
-            isFlightToBerlin = false;
         }
+
+        // Then
+        assertEquals(true, isFlightToBerlin);
+    }
+
+    @Test
+    public void testRouteFinderFlightImpossible() {
+        boolean isFlightToOttawa = true;
+        RouteFinder routeFinder = new RouteFinder();
+
+        // Given
+        Flight flightToOttawa = new Flight("Warsaw", "Ottawa");
+
+        // When
+        try {
+            isFlightToOttawa = routeFinder.findFlight(flightToOttawa);
+        } catch (RouteNotFoundException e) {
+        }
+
+        // Then
+        assertEquals(false, isFlightToOttawa);
+
+    }
+
+    @Test
+    public void testRouteFinderFlightNotFound() {
+        boolean isFlightToTokyo = true;
+        RouteFinder routeFinder = new RouteFinder();
+
+        // Given
+        Flight flightToTokyo = new Flight("Warsaw", "Tokyo");
+
+        // When
         try {
             isFlightToTokyo = routeFinder.findFlight(flightToTokyo);
         } catch (RouteNotFoundException e) {
             isFlightToTokyo = false;
         }
-        try {
-            isFlightToParis = routeFinder.findFlight(flightToParis);
-        } catch (RouteNotFoundException e) {
-            isFlightToParis = false;
-        }
 
         // Then
-        assertEquals(true, isFlightToBerlin);
         assertEquals(false, isFlightToTokyo);
-        assertEquals(true, isFlightToParis);
     }
 }

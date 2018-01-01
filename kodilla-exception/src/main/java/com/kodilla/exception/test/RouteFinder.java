@@ -9,13 +9,14 @@ public class RouteFinder {
         flightMap.put("London", true);
         flightMap.put("Paris", true);
         flightMap.put("Berlin", true);
+        flightMap.put("Ottawa", false);
     }
 
     public boolean findFlight(Flight flight) throws RouteNotFoundException {
 
         if (!flightMap.containsKey(flight.getArrivalAirport()))
             throw new RouteNotFoundException("No destination port found");
-        return true;
+        return flightMap.get(flight.getArrivalAirport());
     }
 }
 
