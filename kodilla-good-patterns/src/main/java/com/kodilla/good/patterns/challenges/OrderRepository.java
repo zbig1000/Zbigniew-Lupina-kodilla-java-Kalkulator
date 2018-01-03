@@ -6,7 +6,7 @@ public interface OrderRepository {
     void createOrder(OrderRequest orderRequest);
 
     OrderRequest getOrderRequest(Integer getOrderId);
-    boolean removeOrderRequest(Integer getOrderId);
+    OrderRequest removeOrderRequest(Integer getOrderId);
 
     List<OrderRequest> getAllExistingOrders();
     List<OrderRequest> getAllUserOrders(User user);

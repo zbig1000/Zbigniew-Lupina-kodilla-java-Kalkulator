@@ -16,17 +16,12 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public OrderRequest getOrderRequest(Integer getOrderId) {
-        OrderKey key = new OrderKey(getOrderId);
-        return rentalMap.get(key);
+        return rentalMap.get(new OrderKey(getOrderId));
     }
 
     @Override
-    public boolean removeOrderRequest(Integer getOrderId) {
-        OrderKey key = new OrderKey(getOrderId);
-        if (rentalMap.containsKey(key)) {
-            rentalMap.remove(key);
-            return true;
-        } else return false;
+    public OrderRequest removeOrderRequest(Integer getOrderId) {
+            return rentalMap.remove(new OrderKey(getOrderId));
     }
 
     @Override
