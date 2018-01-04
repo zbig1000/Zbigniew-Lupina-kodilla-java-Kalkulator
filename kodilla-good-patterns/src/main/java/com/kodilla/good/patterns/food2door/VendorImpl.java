@@ -9,11 +9,11 @@ import java.util.stream.Collectors;
 public class VendorImpl implements Vendor {
     private String vendorName;
     private String vendorAddress;
-    private int orderNumber = 0;
-    private int vendorId;
+    protected int orderNumber = 0;
+    protected int vendorId;
     Map<String, Product> productWarehouse = new HashMap<>();
 
-    private int generateOrderNumber() {
+    protected int generateOrderNumber() {
         orderNumber++;
         return vendorId*1000000 + LocalDate.now().getDayOfYear()*1000 +orderNumber;
     }
@@ -38,7 +38,7 @@ public class VendorImpl implements Vendor {
             productWarehouse.put(prod.getProductName(), new ProductImpl(prod.getProductName(), prod.getProductType(), prod.getProductPrice(), newQuantity));
 
             return new OrderDTOImpl(vendorName, prod.getProductName(), quantity, generateOrderNumber(), "accepted");
-        } else throw new NotSufficientStockException("Not sufficient stock now, try available stock", newQuantity);
+        } throw new NotSufficientStockException("Not sufficient stock now, try available stock", newQuantity);
     }
 
     @Override

@@ -26,30 +26,47 @@ public class OrderingCenter {
                 .collect(Collectors.toList());
     }
 
-    public boolean processOrder(String productName, String vendorName, int quantity) throws ProductNotFoundException, VendorNotFoundException, NotSufficientStockException {
-        OrderDTO newOrderDTO;
+    private Vendor getVendor(String productName, String vendorName, int quantity) throws VendorNotFoundException{
         Vendor vendor = localVendorDB.get(vendorName);
         if (vendor == null) {
             int errorId = generateErrorOrderNumber();
             localOrderDB.put(errorId, new OrderDTOImpl(vendorName +"NOT found", productName, quantity, errorId, "rejected"));
             throw new VendorNotFoundException("Vendor " + vendorName + " NOT found") ;
         }
+        return vendor;
+    }
+
+    private Product getProductFromVendor(String productName, Vendor vendor, int quantity) throws ProductNotFoundException {
         Product product = vendor.getProduct(productName);
         if (product == null) {
             int errorId = generateErrorOrderNumber();
-            localOrderDB.put(errorId, new OrderDTOImpl(vendorName , productName + "NOT found", quantity, errorId, "rejected"));
-            throw new ProductNotFoundException("Product " + productName + " NOT found in " + vendorName) ;
+            localOrderDB.put(errorId, new OrderDTOImpl(vendor.getVendorName(), productName + "NOT found", quantity, errorId, "rejected"));
+            throw new ProductNotFoundException("Product " + productName + " NOT found in " + vendor.getVendorName());
         }
+        return product;
+    }
+
+    public boolean processOrder(String productName, String vendorName, int quantity) throws IncorrectDataException, NotSufficientStockException {
+        OrderDTO newOrderDTO;
         try {
+            Vendor vendor = getVendor(productName, vendorName, quantity);
+            Product product = getProductFromVendor(productName, vendor, quantity);
+
             newOrderDTO = vendor.process(product, quantity);
             localOrderDB.put(newOrderDTO.getOrderNumber(), newOrderDTO);
             return true;
+
         } catch (NotSufficientStockException e) {
             int errorId = generateErrorOrderNumber();
-            localOrderDB.put(errorId, new OrderDTOImpl(vendorName , productName + "NOT sufficient stock", quantity, errorId, "rejected"));
-            throw new NotSufficientStockException("Product " + productName + " quantity " + quantity +" NOT sufficient in " + vendorName, e.getAvailableQuantity());
+            localOrderDB.put(errorId, new OrderDTOImpl(vendorName, productName + "NOT sufficient stock", quantity, errorId, "rejected"));
+            throw new NotSufficientStockException("Product " + productName + " quantity " + quantity + " NOT sufficient in " + vendorName, e.getAvailableQuantity());
+        } catch (VendorNotFoundException e) {
+            throw new IncorrectDataException("Unknown Vendor " + vendorName);
+        } catch (ProductNotFoundException e) {
+            throw new IncorrectDataException("Unknown product " + productName);
         }
     }
+
     public int getTotalOrderNumber() {
         return localOrderDB.size();
     }
