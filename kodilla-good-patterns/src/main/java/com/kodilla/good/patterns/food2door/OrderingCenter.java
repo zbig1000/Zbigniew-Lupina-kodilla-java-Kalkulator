@@ -46,7 +46,7 @@ public class OrderingCenter {
         return product;
     }
 
-    public boolean processOrder(String productName, String vendorName, int quantity) throws IncorrectDataException, NotSufficientStockException {
+    public boolean processOrder(String productName, String vendorName, int quantity) throws VendorNotFoundException, ProductNotFoundException, NotSufficientStockException {
         OrderDTO newOrderDTO;
         try {
             Vendor vendor = getVendor(productName, vendorName, quantity);
@@ -60,10 +60,6 @@ public class OrderingCenter {
             int errorId = generateErrorOrderNumber();
             localOrderDB.put(errorId, new OrderDTOImpl(vendorName, productName + "NOT sufficient stock", quantity, errorId, "rejected"));
             throw new NotSufficientStockException("Product " + productName + " quantity " + quantity + " NOT sufficient in " + vendorName, e.getAvailableQuantity());
-        } catch (VendorNotFoundException e) {
-            throw new IncorrectDataException("Unknown Vendor " + vendorName);
-        } catch (ProductNotFoundException e) {
-            throw new IncorrectDataException("Unknown product " + productName);
         }
     }
 

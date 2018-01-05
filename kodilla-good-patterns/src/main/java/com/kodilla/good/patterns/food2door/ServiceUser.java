@@ -1,21 +1,22 @@
 package com.kodilla.good.patterns.food2door;
 
 public class ServiceUser {
-        private OrderingCenter oc;
+    private OrderingCenter oc;
 
-        public ServiceUser(OrderingCenter oc) {
-            this.oc = oc;
-        }
+    public ServiceUser(OrderingCenter oc) {
+        this.oc = oc;
+    }
 
-        public void putOrder (String productName, String vendorName, int quantity){
-            try {
-                oc.processOrder(productName, vendorName, quantity);
-            } catch (IncorrectDataException e) {
-                System.out.println(e);
-            } catch (NotSufficientStockException e) {
-                System.out.println(e);
-            }
+    public void putOrder(String productName, String vendorName, int quantity) {
+        try {
+            oc.processOrder(productName, vendorName, quantity);
+        } catch (VendorNotFoundException e) {
+            System.out.println(e);
+        } catch (ProductNotFoundException e) {
+            System.out.println(e);
+        } catch (NotSufficientStockException e) {
+            System.out.println(e);
         }
+    }
 }
-
 
