@@ -51,9 +51,9 @@ public class FlightFinder {
                 .collect(Collectors.toList());
 
         List<Connection> connectionList = new LinkedList<>();
+        Connection connection;
         for (Flight flight: endFlights)
         {
-            Connection connection;
             for (Flight nextFlight: intermediateFlights) {
                 connection = new Connection(flight);
                 connection.addFlightToConnection(nextFlight);
