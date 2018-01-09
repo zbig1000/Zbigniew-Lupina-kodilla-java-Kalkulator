@@ -9,11 +9,15 @@ import org.springframework.context.annotation.Scope;
 public class BoardConfig {
 
     @Autowired
-    TaskList taskList;
+    TaskList taskListOne;
+    @Autowired
+    TaskList toDoList;
+    @Autowired
+    TaskList inProgressList;
 
     @Bean
     public Board getBoard() {
-        return new Board();
+        return new Board(taskListOne, toDoList, inProgressList);
     }
 
     @Bean
