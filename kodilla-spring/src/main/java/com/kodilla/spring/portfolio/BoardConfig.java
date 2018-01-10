@@ -15,10 +15,12 @@ public class BoardConfig {
     public TaskList getToDoList() {
         return new TaskList();
     }
+
     @Bean
     public TaskList getInProgressList() {
         return new TaskList();
     }
+
     @Bean
     public TaskList getDoneList() {
         return new TaskList();
