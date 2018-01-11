@@ -25,22 +25,4 @@ public class BoardConfig {
     public TaskList getDoneList() {
         return new TaskList();
     }
-
-//    @Autowired
-//    TaskList toDoList;
-//    @Autowired
-//    TaskList inProgressList;
-//    @Autowired
-//    TaskList doneList;
-//
-//    @Bean
-//    public Board getBoard() {
-//        return new Board(toDoList, inProgressList, doneList);
-//    }
-//
-//    @Bean
-//    @Scope("prototype")
-//    public TaskList getTaskList() {
-//        return new TaskList();
-//    }
 }
