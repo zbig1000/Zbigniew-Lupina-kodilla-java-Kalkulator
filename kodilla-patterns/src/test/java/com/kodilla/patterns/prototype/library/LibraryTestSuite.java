@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
-import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 public class LibraryTestSuite {
