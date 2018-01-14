@@ -2,13 +2,13 @@ package com.kodilla.patterns.factory.tasks;
 
 public class TaskFactory {
 
-    public final static String DRIVIG = "DRIVIG";
+    public final static String DRIVING = "DRIVING";
     public final static String PAINTING = "PAINTING";
     public final static String SHOPPING = "SHOPPING";
 
     public Task createTask(String taskName){
         switch (taskName){
-            case DRIVIG:
+            case DRIVING:
                 return new DrivingTask("driving task", "Washington", "car");
             case PAINTING:
                 return new PaintingTask("painting task", "white", "house");
