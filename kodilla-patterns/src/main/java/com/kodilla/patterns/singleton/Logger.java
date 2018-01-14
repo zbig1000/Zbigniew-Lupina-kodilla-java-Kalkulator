@@ -4,19 +4,9 @@ enum Logger {
     INSTANCE;
     private String lastLog = "";
 
-    public static Logger getInstance()
-    {
+    public static Logger getInstance() {
         return INSTANCE;
     }
-
-
-//    public static Logger getInstance() {
-//        return LoggerHelper.INSTANCE;
-//    }
-//
-//    private static class LoggerHelper {
-//        private static final Logger INSTANCE = new Logger();
-//    }
 
     public void log(String log) {
         lastLog = log;
