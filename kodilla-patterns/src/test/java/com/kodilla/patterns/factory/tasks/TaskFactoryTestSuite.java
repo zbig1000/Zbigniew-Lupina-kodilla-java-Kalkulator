@@ -34,7 +34,7 @@ public class TaskFactoryTestSuite {
 
         //When
         taskList.add(factory.createTaskNum(4));
-        taskList.add(factory.createTask(TaskFactory.DRIVING));
+        taskList.add(factory.createTask(TaskFactory.TaskName.DRIVING));
         System.out.println("Initial task list to execute");
         taskList.stream().forEach(System.out::println);
 

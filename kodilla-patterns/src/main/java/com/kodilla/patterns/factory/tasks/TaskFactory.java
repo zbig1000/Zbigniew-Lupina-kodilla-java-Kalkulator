@@ -2,11 +2,13 @@ package com.kodilla.patterns.factory.tasks;
 
 public class TaskFactory {
 
-    public final static String DRIVING = "DRIVING";
-    public final static String PAINTING = "PAINTING";
-    public final static String SHOPPING = "SHOPPING";
+    public enum TaskName {
+        DRIVING,
+        PAINTING,
+        SHOPPING
+    }
 
-    public Task createTask(String taskName){
+    public Task createTask(TaskName taskName) throws IllegalArgumentException{
         switch (taskName){
             case DRIVING:
                 return new DrivingTask("driving task", "Washington", "car");
@@ -15,7 +17,7 @@ public class TaskFactory {
             case SHOPPING:
                 return new ShoppingTask("shopping task", "potatoes", 2.50);
             default:
-                return null;
+                throw new IllegalArgumentException();
         }
     }
 
@@ -30,7 +32,7 @@ public class TaskFactory {
             case 3:
                 return new ShoppingTask("shopping task", "potatoes", 2.50);
             default:
-                return null;
+                throw new IllegalArgumentException();
         }
     }
 
