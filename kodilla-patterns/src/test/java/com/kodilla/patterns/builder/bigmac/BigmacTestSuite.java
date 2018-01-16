@@ -8,11 +8,11 @@ public class BigmacTestSuite {
     public void testBigmacBuilderInitial() {
         //Given
         Bigmac bigmac = new Bigmac.BigmacBuilder()
-                .roll(Bigmac.BigmacBuilder.SESAME)
+                .roll(Bigmac.BigmacBuilder.Roll.SESAME)
                 .burgers(2)
-                .sauce(Bigmac.BigmacBuilder.BARBEQUE)
-                .ingredient(Bigmac.BigmacBuilder.LETTUCE)
-                .ingredient(Bigmac.BigmacBuilder.ONION)
+                .sauce(Bigmac.BigmacBuilder.Sauce.BARBEQUE)
+                .ingredient(Bigmac.BigmacBuilder.Ingredients.LETTUCE)
+                .ingredient(Bigmac.BigmacBuilder.Ingredients.ONION)
                 .build();
         System.out.println(bigmac.toString());
 
@@ -27,12 +27,12 @@ public class BigmacTestSuite {
     public void testBigmacBuilderRandomOrderParameters() {
         //Given
         Bigmac bigmac = new Bigmac.BigmacBuilder()
-                .ingredient(Bigmac.BigmacBuilder.BACKON)
-                .ingredient(Bigmac.BigmacBuilder.CHAMPIGNON)
-                .roll(Bigmac.BigmacBuilder.STANDARD)
+                .ingredient(Bigmac.BigmacBuilder.Ingredients.BACKON)
+                .ingredient(Bigmac.BigmacBuilder.Ingredients.CHAMPIGNON)
+                .roll(Bigmac.BigmacBuilder.Roll.STANDARD)
                 .burgers(1)
-                .sauce(Bigmac.BigmacBuilder.STANDARD)
-                .ingredient(Bigmac.BigmacBuilder.ONION)
+                .sauce(Bigmac.BigmacBuilder.Sauce.STANDARD)
+                .ingredient(Bigmac.BigmacBuilder.Ingredients.ONION)
                 .build();
         System.out.println(bigmac.toString());
 

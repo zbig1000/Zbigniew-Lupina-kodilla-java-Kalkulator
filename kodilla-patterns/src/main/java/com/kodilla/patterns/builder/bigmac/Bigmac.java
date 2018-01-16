@@ -44,27 +44,34 @@ public class Bigmac {
     }
 
     public static class BigmacBuilder {
-        private String roll;
+        private String bigRoll;
         private int burgers;
-        private String sauce;
+        private String bigSauce;
         private List<String> ingredients = new ArrayList<>();
 
-        public final static String SESAME = "SESAME";
+        public enum Sauce {
+            STANDARD,
+            Isle1000,
+            BARBEQUE
+        }
 
-        public final static String STANDARD = "STANDARD";
-        public final static String Isle1000 = "Isle1000";
-        public final static String BARBEQUE = "BARBEQUE";
+        public enum Roll {
+            STANDARD,
+            SESAME
+        }
 
-        public final static String LETTUCE = "LETTUCE";
-        public final static String ONION = "ONION";
-        public final static String BACKON = "BACKON";
-        public final static String CHILLI = "CHILLI";
-        public final static String CHAMPIGNON = "CHAMPIGNON";
-        public final static String SHRIMPS = "SHRIMPS";
-        public final static String CHEESE = "CHEESE";
+        public enum Ingredients {
+            LETTUCE,
+            ONION,
+            BACKON,
+            CHILLI,
+            CHAMPIGNON,
+            SHRIMPS,
+            CHEESE
+        }
 
-        public BigmacBuilder roll(String roll) {
-            this.roll = roll;
+        public BigmacBuilder roll(Roll roll) {
+            this.bigRoll = roll.toString();
             return this;
         }
 
@@ -73,18 +80,18 @@ public class Bigmac {
             return this;
         }
 
-        public BigmacBuilder sauce(String sauce) {
-            this.sauce = sauce;
+        public BigmacBuilder sauce(Sauce sauce) {
+            this.bigSauce = sauce.toString();
             return this;
         }
 
-        public BigmacBuilder ingredient(String ingredient) {
-            ingredients.add(ingredient);
+        public BigmacBuilder ingredient(Ingredients ingredient) {
+            ingredients.add(ingredient.toString());
             return this;
         }
 
         public Bigmac build() {
-            return new Bigmac(roll, burgers, sauce, ingredients);
+            return new Bigmac(bigRoll, burgers, bigSauce, ingredients);
         }
     }
 }
