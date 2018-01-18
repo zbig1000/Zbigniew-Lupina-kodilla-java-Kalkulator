@@ -4,20 +4,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bigmac {
-    private final String roll;
+    private final Roll roll;
     private final int burgers;
-    private final String sauce;
-    private final List<String> ingredients;
+    private final Sauce sauce;
+    private final List<Ingredients> ingredients;
 
+    public enum Sauce {
+        STANDARD,
+        Isle1000,
+        BARBEQUE
+    }
 
-    public Bigmac(String roll, int burgers, String sauce, List<String> ingredients) {
+    public enum Roll {
+        STANDARD,
+        SESAME
+    }
+
+    public enum Ingredients {
+        LETTUCE,
+        ONION,
+        BACKON,
+        CHILLI,
+        CHAMPIGNON,
+        SHRIMPS,
+        CHEESE
+    }
+
+    public Bigmac(Roll roll, int burgers, Sauce sauce, List<Ingredients> ingredients) {
         this.roll = roll;
         this.burgers = burgers;
         this.sauce = sauce;
         this.ingredients = ingredients;
     }
 
-    public String getRoll() {
+    public Roll getRoll() {
         return roll;
     }
 
@@ -25,11 +45,11 @@ public class Bigmac {
         return burgers;
     }
 
-    public String getSauce() {
+    public Sauce getSauce() {
         return sauce;
     }
 
-    public List<String> getIngredients() {
+    public List<Ingredients> getIngredients() {
         return ingredients;
     }
 
@@ -44,34 +64,15 @@ public class Bigmac {
     }
 
     public static class BigmacBuilder {
-        private String bigRoll;
+        private Roll rol1;
         private int burgers;
-        private String bigSauce;
-        private List<String> ingredients = new ArrayList<>();
+        private Sauce sauce;
+        private List<Ingredients> ingredients = new ArrayList<>();
 
-        public enum Sauce {
-            STANDARD,
-            Isle1000,
-            BARBEQUE
-        }
 
-        public enum Roll {
-            STANDARD,
-            SESAME
-        }
-
-        public enum Ingredients {
-            LETTUCE,
-            ONION,
-            BACKON,
-            CHILLI,
-            CHAMPIGNON,
-            SHRIMPS,
-            CHEESE
-        }
 
         public BigmacBuilder roll(Roll roll) {
-            this.bigRoll = roll.toString();
+            this.rol1 = roll;
             return this;
         }
 
@@ -81,17 +82,17 @@ public class Bigmac {
         }
 
         public BigmacBuilder sauce(Sauce sauce) {
-            this.bigSauce = sauce.toString();
+            this.sauce = sauce;
             return this;
         }
 
         public BigmacBuilder ingredient(Ingredients ingredient) {
-            ingredients.add(ingredient.toString());
+            ingredients.add(ingredient);
             return this;
         }
 
         public Bigmac build() {
-            return new Bigmac(bigRoll, burgers, bigSauce, ingredients);
+            return new Bigmac(rol1, burgers, sauce, ingredients);
         }
     }
 }
