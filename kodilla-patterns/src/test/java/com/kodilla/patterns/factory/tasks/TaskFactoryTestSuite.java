@@ -9,22 +9,6 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class TaskFactoryTestSuite {
-    @Test
-    public void testFactoryCreate() {
-        //Given
-        TaskFactory factory = new TaskFactory();
-        List<Task> taskList = new ArrayList<>();
-
-        //When
-        IntStream.iterate(1, n -> n + 1)
-                .limit(5)
-                .forEach(n -> taskList.add(factory.createTaskNum(n)));
-
-        //Then
-        Assert.assertEquals(5, taskList.size());
-        System.out.println("Initial task list");
-        taskList.stream().forEach(System.out::println);
-    }
 
     @Test
     public void testFactoryTaskStatus() {
@@ -33,7 +17,7 @@ public class TaskFactoryTestSuite {
         List<Task> taskList = new ArrayList<>();
 
         //When
-        taskList.add(factory.createTaskNum(4));
+        taskList.add(factory.createTask(TaskFactory.TaskName.PAINTING));
         taskList.add(factory.createTask(TaskFactory.TaskName.DRIVING));
         System.out.println("Initial task list to execute");
         taskList.stream().forEach(System.out::println);
