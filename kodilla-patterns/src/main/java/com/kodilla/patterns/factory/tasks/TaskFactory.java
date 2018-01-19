@@ -17,7 +17,7 @@ public class TaskFactory {
             case SHOPPING:
                 return new ShoppingTask("shopping task", "potatoes", 2.50);
             default:
-                throw new IllegalArgumentException("parameter taskName not a type of TaskName");
+                throw new IllegalArgumentException("parameter taskName not a type of TaskName " + taskName);
         }
     }
 
