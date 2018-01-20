@@ -1,0 +1,78 @@
+CREATE TABLE ISSUESLISTS (
+ID serial primary key,
+NAME varchar(30)
+);
+CREATE TABLE ISSUESS (
+ID serial primary key, 
+ISSUESLIST_ID  BIGINT UNSIGNED NOT NULL,
+USER_ID_ASSIGNEDTO  BIGINT UNSIGNED NOT NULL,
+FOREIGN KEY  (ISSUESLIST_ID) REFERENCES  ISSUESLISTS(ID),
+FOREIGN KEY  (USER_ID_ASSIGNEDTO) REFERENCES  USERS(ID),
+SUMMARY varchar(100),
+DESCRIPTION varchar(1000)
+);
+commit;
+
+
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUES ("ToDo");
+commit;
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUES ("In progress");
+commit;
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUES ("Done");
+commit;
+
+=========================
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (1, 1, "plan a trip", "plan a trip to Grecee");
+commit;
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (1, 2, "plan a trip", "visiting Poland");
+commit;
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (1, 3, "plan a trip", "sending poscards from Denmark");
+commit;
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (2, 1, "plan a trip", "plan a trip to Grecee");
+commit;
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (2, 2, "plan a trip", "visiting Russia");
+commit;
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (2, 3, "plan a trip", "sending poscards from Spain");
+commit;
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (3, 1, "plan a trip", "sending poscards from Austria");
+commit;
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (3, 2, "plan a trip", "visiting USA");
+commit;
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (3, 3, "plan a trip", "sending poscards from Canada");
+commit;
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (4, 1, "plan a trip", "plan a trip to France");
+commit;
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (4, 2, "plan a trip", "visiting Finland");
+commit;
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (4, 3, "plan a trip", "sending poscards from Turkey");
+commit;
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (5, 1, "plan a trip", "plan a trip to Italy");
+commit;
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (5, 2, "plan a trip", "visiting Japan");
+commit;
+INSERT INTO ISSUESS (USER_ID_ASSIGNEDTO,ISSUESLIST_ID , SUMMARY ,  DESCRIPTION)
+VALUES (5, 3, "plan a trip", "sending poscards from Brasil");
+commit;
+
+
+======
