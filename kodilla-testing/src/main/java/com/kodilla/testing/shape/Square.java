@@ -15,7 +15,6 @@ public class Square implements Shape {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Square) return true;
-        else return false;
+        return obj instanceof Square;
     }
 }

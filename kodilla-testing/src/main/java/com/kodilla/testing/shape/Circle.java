@@ -18,7 +18,6 @@ public class Circle implements Shape {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Circle) return true;
-        else return false;
+        return obj instanceof Circle;
     }
 }

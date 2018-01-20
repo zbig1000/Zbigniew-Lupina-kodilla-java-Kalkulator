@@ -238,7 +238,7 @@ public class StatisticVendorTestSuite {
         Assert.assertEquals(50, avCommentPerUser,0.01d);
 
 //Given second call
-        when(statisticsMock.usersNames()).thenReturn(Collections.<String>emptyList());
+        when(statisticsMock.usersNames()).thenReturn(Collections.emptyList());
 //When second call
         statsVendor.calculateAdvStatistics(statisticsMock);
         avPostPerUser = statsVendor.getAveragePostNumberPerUser();
