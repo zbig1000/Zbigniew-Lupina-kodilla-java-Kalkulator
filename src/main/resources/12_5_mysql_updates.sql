@@ -9,7 +9,7 @@ SELECT * FROM POSTS;
 Modyfikacje w dodanym rekordzie wartoœæ pola BODY 
 
 UPDATE POSTS
-SET BODY = "Traveling to Brasil not easy")
+SET BODY = ("Traveling to Brasil not easy")
 WHERE ID = 7
 commit;
 ==============
