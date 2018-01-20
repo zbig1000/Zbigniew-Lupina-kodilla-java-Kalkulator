@@ -1,20 +1,18 @@
-Listï¿½ zadaï¿½ z tabeli ISSUESS z doï¿½ï¿½czonymi do nich nazwami list zadaï¿½ z tabeli ISSUESLISTS
+Listê zadañ z tabeli ISSUESS z do³¹czonymi do nich nazwami list zadañ z tabeli ISSUESLISTS
 
 SELECT I.ID, L.NAME, I.SUMMARY, I.DESCRIPTION
 FROM ISSUESS I, ISSUESLISTS L
 WHERE I.ISSUESLIST_ID = L.ID
 ORDER BY I.ID;
 ==============
-
-Listï¿½ zadaï¿½ z tabeli ISSUESS z przypisanymi do nich uï¿½ytkownikami z tabeli USERS
+Listê zadañ z tabeli ISSUESS z przypisanymi do nich u¿ytkownikami z tabeli USERS
 
 SELECT I.ID, U.FIRSTNAME, U.LASTNAME, I.SUMMARY, I.DESCRIPTION
 FROM ISSUESS I, USERS U
 WHERE I.USER_ID_ASSIGNEDTO = U.ID
 ORDER BY I.ID;
 ==============
-
-Imiona i nazwiska uï¿½ytkownikï¿½w posiadajï¿½cych zadania, wraz z informacjï¿½ o iloï¿½ci zadaï¿½, ktï¿½re sï¿½ do nich przypisane
+Imiona i nazwiska u¿ytkowników posiadaj¹cych zadania, wraz z informacj¹ o iloœci zadañ, które s¹ do nich przypisane
 
 SELECT U.FIRSTNAME, U.LASTNAME, COUNT(*) AS TASK_NUMBER
 FROM ISSUESS I, USERS U
