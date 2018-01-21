@@ -5,6 +5,7 @@ FROM ISSUESS I
 JOIN ISSUESLISTS ON 
 ISSUESLISTS.ID = ISSUESLIST_ID 
 ORDER BY I.ID;
+
 ==============
 Listê zadañ z tabeli ISSUESS z przypisanymi do nich u¿ytkownikami z tabeli USERS
 
