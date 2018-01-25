@@ -81,12 +81,12 @@ public class DbManagerTestSuite {
 
         try (
                 Connection con = dbManager.getConnection();
-                PreparedStatement seachUsername = con.prepareStatement(sqlQuery)) {
+                PreparedStatement seachUserName = con.prepareStatement(sqlQuery)) {
 
-            seachUsername.setString(1, parameterName);
-            seachUsername.setString(2, parameterLastName);
+            seachUserName.setString(1, parameterName);
+            seachUserName.setString(2, parameterLastName);
 
-            ResultSet rs = seachUsername.executeQuery();
+            ResultSet rs = seachUserName.executeQuery();
 
             //Then
             int counter = 0;
