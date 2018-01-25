@@ -71,8 +71,10 @@ public class DbManagerTestSuite {
 
     @Test
     public void testPreparedStatement() throws SQLException {
+        //Given
         DbManager dbManager = DbManager.getInstance();
 
+        //When
         String sqlQuery = "SELECT  U.FIRSTNAME, U.LASTNAME\n" +
                 "FROM USERS U\n" +
                 "WHERE FIRSTNAME = ?  OR LASTNAME = ?";
@@ -86,9 +88,8 @@ public class DbManagerTestSuite {
             seachUserName.setString(1, parameterName);
             seachUserName.setString(2, parameterLastName);
 
-            ResultSet rs = seachUserName.executeQuery();
-
             //Then
+            ResultSet rs = seachUserName.executeQuery();
             int counter = 0;
             while (rs.next()) {
                 System.out.println(
