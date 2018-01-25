@@ -3,9 +3,7 @@ package com.kodilla.jdbc;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DbManagerTestSuite {
     @Test
@@ -29,7 +27,7 @@ public class DbManagerTestSuite {
 
         //Then
         int counter = 0;
-        while(rs.next()) {
+        while (rs.next()) {
             System.out.println(rs.getInt("ID") + ", " +
                     rs.getString("FIRSTNAME") + ", " +
                     rs.getString("LASTNAME"));
@@ -53,20 +51,53 @@ public class DbManagerTestSuite {
                 "GROUP BY POSTS.USER_ID\n" +
                 "HAVING (POSTS_NUM > 1)\n" +
                 "ORDER BY U.ID;\n";
-        Statement statement = dbManager.getConnection().createStatement();
-        ResultSet rs = statement.executeQuery(sqlQuery);
 
-        //Then
-        int counter = 0;
-        while(rs.next()) {
-            System.out.println(
-                    rs.getString("FIRSTNAME") + ", " +
-                    rs.getString("LASTNAME") + ", " +
-                    rs.getInt("POSTS_NUM"));
-            counter++;
+        try (
+                Statement statement = dbManager.getConnection().createStatement();
+                ResultSet rs = statement.executeQuery(sqlQuery)) {
+
+            //Then
+            int counter = 0;
+            while (rs.next()) {
+                System.out.println(
+                        rs.getString("FIRSTNAME") + ", " +
+                                rs.getString("LASTNAME") + ", " +
+                                rs.getInt("POSTS_NUM"));
+                counter++;
+            }
+            Assert.assertEquals(1, counter);
         }
-        rs.close();
-        statement.close();
-        Assert.assertEquals(1, counter);
+    }
+
+    @Test
+    public void testPreparedStatement() throws SQLException {
+        DbManager dbManager = DbManager.getInstance();
+
+        String sqlQuery = "SELECT  U.FIRSTNAME, U.LASTNAME\n" +
+                "FROM USERS U\n" +
+                "WHERE FIRSTNAME = ?  OR LASTNAME = ?";
+        String parameterName = "John";
+        String parameterLastName = "Lee";
+
+        try (
+                Connection con = dbManager.getConnection();
+                PreparedStatement seachUsername = con.prepareStatement(sqlQuery)) {
+
+            seachUsername.setString(1, parameterName);
+            seachUsername.setString(2, parameterLastName);
+
+            ResultSet rs = seachUsername.executeQuery();
+
+            //Then
+            int counter = 0;
+            while (rs.next()) {
+                System.out.println(
+                        rs.getString("FIRSTNAME") + ", " +
+                                rs.getString("LASTNAME"));
+                counter++;
+
+            }
+            Assert.assertEquals(3, counter);
+        }
     }
 }
