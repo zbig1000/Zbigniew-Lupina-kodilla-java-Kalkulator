@@ -95,7 +95,6 @@ public class DbManagerTestSuite {
                         rs.getString("FIRSTNAME") + ", " +
                                 rs.getString("LASTNAME"));
                 counter++;
-
             }
             Assert.assertEquals(3, counter);
         }
