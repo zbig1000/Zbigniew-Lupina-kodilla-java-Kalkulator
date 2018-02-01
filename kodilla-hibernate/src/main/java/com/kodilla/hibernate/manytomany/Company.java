@@ -8,7 +8,7 @@ import java.util.List;
 @NamedNativeQuery(
         name = "Company.retrieveCompaniesNamesStartingWith",
         query = "SELECT * FROM COMPANIES" +
-                " WHERE COMPANY_NAME LIKE CONCAT(:INITIAL_STRING, '%')",
+                " WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :INITIAL_STRING",
         resultClass = Company.class
 )
 
