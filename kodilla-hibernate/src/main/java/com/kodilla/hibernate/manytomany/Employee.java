@@ -5,9 +5,21 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @NamedQuery(
         name = "Employee.findEmployeeByName",
         query = "FROM Employee WHERE lastname = :LASTNAME"
+)
+@NamedNativeQuery(
+        name = "Employee.findEmployeeByNameInCompany",
+        query = "SELECT * FROM EMPLOYEES e "+
+                "inner join JOIN_COMPANY_EMPLOYEE jc " +
+                " on jc.EMPLOYEE_ID = e.EMPLOYEE_ID " +
+                "inner join COMPANIES c " +
+                " on c.COMPANY_ID = jc.COMPANY_ID " +
+                " WHERE e.LASTNAME = :LASTNAME " +
+                "and c.COMPANY_NAME = :COMPANY",
+        resultClass = Employee.class
 )
 @Entity
 @Table(name = "EMPLOYEES")
@@ -70,4 +82,6 @@ public class Employee {
     public void setCompanies(List<Company> companies) {
         this.companies = companies;
     }
+
+
 }
