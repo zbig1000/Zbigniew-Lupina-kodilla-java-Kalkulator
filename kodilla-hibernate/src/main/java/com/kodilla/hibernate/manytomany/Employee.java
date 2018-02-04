@@ -5,11 +5,19 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-
-@NamedQuery(
-        name = "Employee.findEmployeeByName",
-        query = "FROM Employee WHERE lastname = :LASTNAME"
-)
+@NamedQueries({
+        @NamedQuery(
+                name = "Employee.findEmployeeByName",
+                query = "FROM Employee WHERE lastname = :LASTNAME"
+        ),
+        @NamedQuery(
+                name = "Employee.findEmployeeByNameAndCompany",
+                query = "FROM Employee e " +
+                        "join e.companies c " +
+                        "where c.name = :COMPANYNAME " +
+                        "AND e.lastname = :LASTNAME"
+        )
+})
 @NamedNativeQuery(
         name = "Employee.findEmployeeByNameInCompany",
         query = "SELECT * FROM EMPLOYEES e "+

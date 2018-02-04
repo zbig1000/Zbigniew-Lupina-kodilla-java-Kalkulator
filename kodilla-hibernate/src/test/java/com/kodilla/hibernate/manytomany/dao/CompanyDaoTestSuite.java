@@ -25,6 +25,7 @@ public class CompanyDaoTestSuite {
     Employee johnSmith;
     Employee stephanieClarckson;
     Employee lindaKovalsky;
+    Employee paulKovalsky;
 
 
     @Before
@@ -32,6 +33,7 @@ public class CompanyDaoTestSuite {
         johnSmith = new Employee("John", "Smith");
         stephanieClarckson = new Employee("Stephanie", "Clarckson");
         lindaKovalsky = new Employee("Linda", "Kovalsky");
+        paulKovalsky = new Employee("Paul", "Kovalsky");
 
         softwareMachine = new Company("Software Machine");
         dataMaesters = new Company("SoftData Maesters");
@@ -42,12 +44,15 @@ public class CompanyDaoTestSuite {
         dataMaesters.getEmployees().add(lindaKovalsky);
         greyMatter.getEmployees().add(johnSmith);
         greyMatter.getEmployees().add(lindaKovalsky);
+        greyMatter.getEmployees().add(paulKovalsky);
+
 
         johnSmith.getCompanies().add(softwareMachine);
         johnSmith.getCompanies().add(greyMatter);
         stephanieClarckson.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(greyMatter);
+        paulKovalsky.getCompanies().add(greyMatter);
 
         companyDao.save(softwareMachine);
         companyDao.save(dataMaesters);
@@ -107,7 +112,7 @@ public class CompanyDaoTestSuite {
         List<Employee> employeeList = employeeDao.findEmployeeByName(lastName);
 
         //Then
-        Assert.assertEquals(1, employeeList.size());
+        Assert.assertEquals(2, employeeList.size());
 
         //CleanUp
     }
@@ -121,7 +126,21 @@ public class CompanyDaoTestSuite {
         List<Employee> employeeList = employeeDao.findEmployeeByNameInCompany(lastName, companyName);
 
         //Then
-        Assert.assertEquals(1, employeeList.size());
+        Assert.assertEquals(2, employeeList.size());
+
+        //CleanUp
+
+    }
+    @Test
+    public void testNamedQueryFindEmployeeByNameInCompany(){
+        //Given
+        final String lastName = "Kovalsky";
+        final String companyName = "Grey Matter";
+        //When
+        List<Employee> employeeList = employeeDao.findEmployeeByNameAndCompany(lastName, companyName);
+
+        //Then
+        Assert.assertEquals(2, employeeList.size());
 
         //CleanUp
     }
