@@ -57,4 +57,9 @@ public class Company {
         this.employees = employees;
     }
 
+    public void addEmployee(Employee emp) {
+        employees.add(emp);
+        emp.getCompanies().add(this);
+    }
+
 }

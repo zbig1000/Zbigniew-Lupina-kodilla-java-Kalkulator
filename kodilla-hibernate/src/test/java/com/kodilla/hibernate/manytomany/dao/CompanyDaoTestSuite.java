@@ -39,20 +39,12 @@ public class CompanyDaoTestSuite {
         dataMaesters = new Company("SoftData Maesters");
         greyMatter = new Company("Grey Matter");
 
-        softwareMachine.getEmployees().add(johnSmith);
-        dataMaesters.getEmployees().add(stephanieClarckson);
-        dataMaesters.getEmployees().add(lindaKovalsky);
-        greyMatter.getEmployees().add(johnSmith);
-        greyMatter.getEmployees().add(lindaKovalsky);
-        greyMatter.getEmployees().add(paulKovalsky);
-
-
-        johnSmith.getCompanies().add(softwareMachine);
-        johnSmith.getCompanies().add(greyMatter);
-        stephanieClarckson.getCompanies().add(dataMaesters);
-        lindaKovalsky.getCompanies().add(dataMaesters);
-        lindaKovalsky.getCompanies().add(greyMatter);
-        paulKovalsky.getCompanies().add(greyMatter);
+        softwareMachine.addEmployee(johnSmith);
+        dataMaesters.addEmployee(stephanieClarckson);
+        dataMaesters.addEmployee(lindaKovalsky);
+        greyMatter.addEmployee(lindaKovalsky);
+        greyMatter.addEmployee(johnSmith);
+        greyMatter.addEmployee(paulKovalsky);
 
         companyDao.save(softwareMachine);
         companyDao.save(dataMaesters);
