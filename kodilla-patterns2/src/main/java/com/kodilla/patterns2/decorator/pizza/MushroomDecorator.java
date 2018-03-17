@@ -1,4 +1,19 @@
 package com.kodilla.patterns2.decorator.pizza;
 
-public class MuchroomDecorator {
+import java.math.BigDecimal;
+
+public class MushroomDecorator extends AbstractPizzaDecorator {
+    public MushroomDecorator(PizzaOrder pizzaOrder) {
+        super(pizzaOrder);
+    }
+
+    @Override
+    public BigDecimal getCost() {
+        return super.getCost().add(new BigDecimal(5));
+    }
+
+    @Override
+    public String getDescription() {
+        return super.getDescription() + " + mushrooms";
+    }
 }
