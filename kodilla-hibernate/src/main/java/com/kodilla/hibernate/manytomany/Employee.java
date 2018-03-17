@@ -16,6 +16,10 @@ import java.util.List;
                         "join e.companies c " +
                         "where c.name = :COMPANYNAME " +
                         "AND e.lastname = :LASTNAME"
+        ),
+        @NamedQuery(
+                name = "Employee.findEmployeeByNamePart",
+                query = "FROM Employee WHERE (lastname LIKE :NAMEPART) OR (firstname LIKE :NAMEPART)"
         )
 })
 @NamedNativeQuery(

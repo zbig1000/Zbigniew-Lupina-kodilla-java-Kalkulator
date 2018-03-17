@@ -11,6 +11,10 @@ import java.util.List;
                 " WHERE SUBSTRING(COMPANY_NAME, 1, 3) = :INITIAL_STRING",
         resultClass = Company.class
 )
+@NamedQuery(
+        name = "Company.findCompanyByNamePart",
+        query = "FROM Company WHERE name LIKE :NAMEPART"
+)
 
 @Entity
 @Table(name = "COMPANIES")
@@ -61,5 +65,4 @@ public class Company {
         employees.add(emp);
         emp.getCompanies().add(this);
     }
-
 }
