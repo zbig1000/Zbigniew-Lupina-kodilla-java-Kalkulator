@@ -16,7 +16,7 @@ public class UserTasks implements Observable {
 
     public void addTask(String task) {
         tasks.add(task);
-        notifyObservers();
+        notifyObservers(task);
     }
 
     @Override
@@ -25,9 +25,9 @@ public class UserTasks implements Observable {
     }
 
     @Override
-    public void notifyObservers() {
+    public void notifyObservers(String task) {
         for (Observer observer : observers) {
-            observer.update(this);
+            observer.updateTasks(task);
         }
     }
 
