@@ -16,12 +16,12 @@ public class CompanyEmployeeSearchFacade {
     @Autowired
     EmployeeDao employeeDao;
 
-    public List<Company> getCompaniesWithNamePart(String substring) {
-        return companyDao.findCompanyByNamePart(substring);
+    public List<Company> getCompanyByNamePart(String substring) {
+        return companyDao.findCompanyByNamePart('%' + substring + '%');
     }
 
-    public List<Employee> getEmployeeNamePart(String substring) {
-        return employeeDao.findEmployeeByNamePart(substring);
+    public List<Employee> getEmployeeByNamePart(String substring) {
+        return employeeDao.findEmployeeByNamePart('%' + substring + '%');
     }
 
     public CompanyDao getCompanyDao() {

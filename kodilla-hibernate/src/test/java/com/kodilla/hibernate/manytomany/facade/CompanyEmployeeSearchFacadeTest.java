@@ -74,10 +74,9 @@ public class CompanyEmployeeSearchFacadeTest {
     @Test
     public void testNamedQueryFindEmployeeByNamePart() {
         //Given
-        final String namePart = "%sky%";
+        final String namePart = "sky";
         //When
-        List<Employee> employeeList = searchFacade.getEmployeeNamePart(namePart);
-
+        List<Employee> employeeList = searchFacade.getEmployeeByNamePart(namePart);
         //Then
         Assert.assertEquals(2, employeeList.size());
 
@@ -87,10 +86,9 @@ public class CompanyEmployeeSearchFacadeTest {
     @Test
     public void testNamedQueryFindCompanyByNamePart() {
         //Given
-        final String namePart = "%ers%";
+        final String namePart = "ers";
         //When
-        List<Company> companyList = searchFacade.getCompaniesWithNamePart(namePart);
-
+        List<Company> companyList = searchFacade.getCompanyByNamePart(namePart);
         //Then
         Assert.assertEquals(2, companyList.size());
 
