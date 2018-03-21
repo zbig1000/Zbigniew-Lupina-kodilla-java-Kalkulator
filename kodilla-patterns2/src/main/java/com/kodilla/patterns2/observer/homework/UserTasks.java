@@ -3,7 +3,7 @@ package com.kodilla.patterns2.observer.homework;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserTasks implements Observable {
+public class UserTasks implements Observable, TaskPublisher {
     private final List<Observer> observers;
     private final List<String> tasks;
     private final String name;
@@ -16,7 +16,7 @@ public class UserTasks implements Observable {
 
     public void addTask(String task) {
         tasks.add(task);
-        notifyObservers(task);
+        notifyObservers();
     }
 
     @Override
@@ -25,9 +25,9 @@ public class UserTasks implements Observable {
     }
 
     @Override
-    public void notifyObservers(String task) {
+    public void notifyObservers() {
         for (Observer observer : observers) {
-            observer.updateTasks(task);
+            observer.update(this);
         }
     }
 
@@ -36,10 +36,12 @@ public class UserTasks implements Observable {
         observers.remove(observer);
     }
 
-    public List<String> getTasks() {
+    @Override
+    public final List<String> getTasks() {
         return tasks;
     }
 
+    @Override
     public String getName() {
         return name;
     }
