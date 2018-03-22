@@ -1,6 +1,7 @@
 package com.kodilla.patterns2.observer.homework;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class UserTasks implements Observable, TaskPublisher {
@@ -38,7 +39,7 @@ public class UserTasks implements Observable, TaskPublisher {
 
     @Override
     public final List<String> getTasks() {
-        return tasks;
+        return Collections.unmodifiableList(tasks);
     }
 
     @Override
