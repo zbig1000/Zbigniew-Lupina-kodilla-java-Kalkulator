@@ -1,5 +1,6 @@
 package com.kodilla.patterns2.adapter.bookclassifier;
 
+import com.kodilla.patterns2.adapter.bookclasifier.MedianAdaptee;
 import com.kodilla.patterns2.adapter.bookclasifier.MedianAdapter;
 import com.kodilla.patterns2.adapter.bookclasifier.librarya.Book;
 import org.junit.Assert;
@@ -20,7 +21,7 @@ public class MedianAdapterTestSuite {
         bookSet.add(new Book("jura", "number4", 1995, "lib09181"));
 
         //When
-        MedianAdapter medianAdapter = new MedianAdapter();
+        MedianAdapter medianAdapter = new MedianAdapter(new MedianAdaptee());
         int publicationYearMedian = medianAdapter.publicationYearMedian(bookSet);
 
         //Then

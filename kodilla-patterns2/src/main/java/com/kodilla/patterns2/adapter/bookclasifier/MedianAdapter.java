@@ -9,7 +9,11 @@ import java.util.Map;
 import java.util.Set;
 
 public class MedianAdapter implements Classifier {
-    MedianAdaptee medianAdaptee = new MedianAdaptee();
+    MedianAdaptee medianAdaptee;
+
+    public MedianAdapter(MedianAdaptee medianAdaptee) {
+        this.medianAdaptee = medianAdaptee;
+    }
 
     @Override
     public int publicationYearMedian(Set<com.kodilla.patterns2.adapter.bookclasifier.librarya.Book> bookSet) {
