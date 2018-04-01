@@ -38,7 +38,7 @@ public class StoredPostTestSuite {
         statement.executeUpdate(sqlUpdate);
         //When
         String sqlProcedureCall = "CALL UpdateBestsellers()";
-        statement.executeUpdate(sqlProcedureCall);
+        statement.execute(sqlProcedureCall);
         //Then
         String sqlCheckTable = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER=FALSE";
         ResultSet rs = statement.executeQuery(sqlCheckTable);
@@ -46,7 +46,7 @@ public class StoredPostTestSuite {
         if (rs.next()) {
             howMany = rs.getInt("HOW_MANY");
         }
-        assertEquals(1, howMany);
+        assertEquals(0, howMany);
     }
 
 }
