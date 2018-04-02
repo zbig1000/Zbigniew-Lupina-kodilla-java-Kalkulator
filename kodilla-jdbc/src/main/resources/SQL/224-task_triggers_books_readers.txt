@@ -34,8 +34,9 @@ delimiter $$
 create trigger BOOKS_INSERT after insert on BOOKS
 for each row
 begin
-insert into BOOKS_aud (event_date, event_type, BOOK_id, book_id, NEW_TITLE , NEW_PUBYEAR)
+insert into BOOKS_aud (event_date, event_type, BOOK_id, NEW_TITLE , NEW_PUBYEAR)
        		values(curtime(), "insert", NEW.BOOK_ID, NEW.TITLE,	NEW.PUBYEAR);
+end;
 end $$
 delimiter ;      
         
