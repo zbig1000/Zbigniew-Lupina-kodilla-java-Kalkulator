@@ -1,0 +1,17 @@
+explain select * from books
+where title = "potop";
+
+create index booktitle on books (title);
+#--------------
+explain select * from readers
+where firstname = "John"
+and lastname = "Smith";
+#--------------
+explain select * from readers
+where firstname = "John"
+and lastname = "Smith";
+
+create index fullname on readers (firstname, lastname);
+create index firstname on readers (firstname);
+create fulltext index firstnameindextext on readers (firstname);
+
