@@ -47,7 +47,7 @@ create trigger BOOKS_DELETE after delete on BOOKS
 for each row
 begin
 insert into BOOKS_aud (event_date, event_type, BOOK_id, OLD_TITLE , OLD_PUBYEAR, OLD_BESTSELLER)
-       		values(curtime(), "insert", OLD.BOOK_ID, OLD.TITLE, OLD.PUBYEAR, OLD.BESTSELLER ) ;
+       		values(curtime(), "delete", OLD.BOOK_ID, OLD.TITLE, OLD.PUBYEAR, OLD.BESTSELLER ) ;
 end $$
 delimiter ;          
 
