@@ -12,6 +12,4 @@ where firstname = "John"
 and lastname = "Smith";
 
 create index fullname on readers (firstname, lastname);
-create index firstname on readers (firstname);
-create fulltext index firstnameindextext on readers (firstname);
 
