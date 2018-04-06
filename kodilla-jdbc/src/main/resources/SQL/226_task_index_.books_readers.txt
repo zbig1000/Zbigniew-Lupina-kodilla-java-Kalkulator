@@ -4,8 +4,7 @@ where title = "potop";
 create index booktitle on books (title);
 #--------------
 explain select * from readers
-where firstname = "John"
-and lastname = "Smith";
+where firstname = "John";
 #--------------
 explain select * from readers
 where firstname = "John"
