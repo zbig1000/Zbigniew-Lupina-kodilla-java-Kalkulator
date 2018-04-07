@@ -27,6 +27,7 @@ dependencies {
     // External dependencies
     compile('org.springframework.boot:spring-boot-starter-web')
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.11.0'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
 
     // Test dependencies !!
     testCompile('junit:junit:4.12')
