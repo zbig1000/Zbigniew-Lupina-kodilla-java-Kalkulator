@@ -46,7 +46,7 @@ public class StoredPostTestSuite {
         if (rs.next()) {
             howMany = rs.getInt("HOW_MANY");
         }
-        assertEquals(0, howMany);
+        assertEquals(2, howMany);
     }
 
 }
