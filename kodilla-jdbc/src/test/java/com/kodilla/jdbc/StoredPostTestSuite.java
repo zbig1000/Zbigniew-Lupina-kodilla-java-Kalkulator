@@ -1,20 +1,37 @@
 package com.kodilla.jdbc;
 
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 import static org.junit.Assert.assertEquals;
 
-public class StoredPostTestSuite {
-//    @Test
+public class StoredPostTestSuite  {
+    private DbManager dbManager;
+    private Statement statement;
+
+    @Before
+    public void prepareTest() throws SQLException, InterruptedException {
+        dbManager = DbManager.getInstance();
+        statement = dbManager.getConnection().createStatement();
+    }
+
+    @After
+    public void closeTest() throws SQLException {
+        statement.close();
+    }
+
+    @Test
     public void testUpdateVipLevels() throws SQLException {
         //Given
-        DbManager dbManager = DbManager.getInstance();
         String sqlUpdate = "UPDATE READERS SET VIP_LEVEL=\"Not set\"";
-        Statement statement = dbManager.getConnection().createStatement();
         statement.executeUpdate(sqlUpdate);
         //When
         String sqlProcedureCall = "CALL UpdateVipLevels()";
@@ -29,12 +46,10 @@ public class StoredPostTestSuite {
         assertEquals(0, howMany);
     }
 
-//    @Test
+    @Test
     public void testUpdateBestsellers() throws SQLException {
         //Given
-        DbManager dbManager = DbManager.getInstance();
         String sqlUpdate = "UPDATE BOOKS SET BESTSELLER=FALSE";
-        Statement statement = dbManager.getConnection().createStatement();
         statement.executeUpdate(sqlUpdate);
         //When
         String sqlProcedureCall = "CALL UpdateBestsellers()";
