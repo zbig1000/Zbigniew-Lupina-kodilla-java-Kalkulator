@@ -1,6 +1,7 @@
 package com.kodilla.testing2.crudapp;
 
 import com.kodilla.testing2.config.WebDriverConfig;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -100,7 +101,7 @@ public class CrudAppTestSuite {
 
         return result;
     }
-
+    @Ignore
     @Test
     public void shouldCreateTrellocard() throws InterruptedException {
         String taskName = createCrudAppTestTask();

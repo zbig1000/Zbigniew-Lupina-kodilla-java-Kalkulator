@@ -1,0 +1,28 @@
+create table STATS (
+STAT_ID INT(11) AUTO_INCREMENT,
+STAT_DATE DATETIME NOT NULL,
+STAT VARCHAR(20) NOT NULL,
+VALUE INT(11) NOT NULL,
+PRIMARY KEY (STAT_ID));
+commit;
+#--------------
+create view BESTSELLERS_COUNT AS
+select count(*) as COUNTER from books
+where bestseller = 1;
+commit;
+#--------------
+use kodilla_course;
+DELIMITER $$
+
+create event BESTSELLER_MONITOR
+	ON SCHEDULE EVERY 1 MINUTE
+	DO BEGIN
+		DECLARE MYCOUNT INT;
+		CALL UpdateBestSellers();
+		SELECT COUNTER from BESTSELLERS_COUNT into MYCOUNT;
+		INSERT INTO STATS (STAT_DATE, STAT, VALUE)
+			VALUES (CURDATE(), "BESTSELLERS", MYCOUNT);
+        	commit;
+    end $$
+end;  
+DELIMITER ;

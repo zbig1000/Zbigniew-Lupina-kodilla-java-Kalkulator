@@ -2,6 +2,7 @@ package com.kodilla.exception.main;
 
 import com.kodilla.exception.io.FileReader;
 import com.kodilla.exception.io.FileReaderException;
+import com.kodilla.exception.io.StringSplitter;
 
 public class ExceptionModuleRunner {
     public static void main(String args[]) {
@@ -13,5 +14,9 @@ public class ExceptionModuleRunner {
         System.out.println("Problem while reading the file "+e);
         }
 
+        StringSplitter sp = new StringSplitter();
+        sp.split();
+        
+        
     }
 }

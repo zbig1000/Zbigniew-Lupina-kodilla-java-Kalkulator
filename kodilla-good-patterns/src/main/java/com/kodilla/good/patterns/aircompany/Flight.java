@@ -1,8 +1,6 @@
 package com.kodilla.good.patterns.aircompany;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Objects;
 
 public class Flight {
     private final int flightNumber;

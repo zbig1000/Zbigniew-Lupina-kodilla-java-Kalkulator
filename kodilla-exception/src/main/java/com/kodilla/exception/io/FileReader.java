@@ -17,10 +17,10 @@ public class FileReader {
         fileLines.forEach(System.out::println);
         }
         catch (IOException e) {
-        throw new FileReaderException();
+        // throw new FileReaderException();
         }
         finally {
-            System.out.println("jestem tu zawsze");
+            System.out.println("jestem tu zawsze!");
 
         }
 

@@ -32,10 +32,15 @@ public class BookTestSuite {
         List<Book> books = bookDirectory.getList();
 
         //Then
-        int numberOfBooksPublicatedAfter2007 = IntStream.range(0, books.size())
-                .filter(n -> books.get(n).getYearOfPublication() > 2007)
-                .map(n -> 1)
-                .sum();
+//        int numberOfBooksPublicatedAfter2007 = IntStream.range(0, books.size())
+//                .filter(n -> books.get(n).getYearOfPublication() > 2007)
+//                .map(n -> 1)
+//                .sum();
+        int numberOfBooksPublicatedAfter2007 = books.stream()
+                .filter(b -> b.getYearOfPublication() > 2007)
+                .mapToInt(b -> 1).sum();        
+        
+        
         Assert.assertEquals(3, numberOfBooksPublicatedAfter2007);
     }
 }
